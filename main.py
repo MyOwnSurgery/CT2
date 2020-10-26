@@ -64,7 +64,7 @@ class CyclicCode:
             l.append(n)
         last = '1'
         first = '0'
-        for i in range(0,14):
+        for i in range(0,self.n-1):
             last += '1'
             first += '0'
         l.append(last)
@@ -129,4 +129,5 @@ class CyclicCode:
 
 cyclic = CyclicCode()
 cyclic.code_decode('D:\\PycharmProjects\\CT\\text.txt')
+
 
