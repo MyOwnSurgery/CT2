@@ -103,7 +103,7 @@ class CyclicCode:
         i = 0
         res = []
         table = self.make_table(2)
-
+        coded[8] = 1
         while j < len(coded):
             string = coded[j:j + self.n]
             rem = self.remainder(string)
