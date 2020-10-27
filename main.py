@@ -79,15 +79,12 @@ class CyclicCode:
         j = 0
         coded = []
         i = 0
-        nulls = 0
-        while j < len(bits):
+        bits_len = len(bits)
+        while j < bits_len:
             a = list(bits[j:j + self.k])
-            if len(a) < self.k:
-                while len(a) != self.k:
-                    nulls = nulls + 1
-                    a.append(False)
+            while len(a) != self.k:
+                a.append(False)
             b = np.zeros(self.k)
-
             for k in range(0, self.k):
                 if a[k]:
                     b[k] = 1
@@ -104,6 +101,7 @@ class CyclicCode:
         res = []
         table = self.make_table(2)
         coded[8] = 1
+        print(table)
         while j < len(coded):
             string = coded[j:j + self.n]
             rem = self.remainder(string)
@@ -120,7 +118,7 @@ class CyclicCode:
 
             j = j + self.n
             i = i + self.k
-        res = res[0:len(res)-nulls]
+        res = res[0:len(res)-(len(res)-bits_len)]
         bits2 = ba.bitarray()
         bits2.extend(res)
         with open('text_decode.txt', 'wb') as fh:
